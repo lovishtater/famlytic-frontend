@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    @apply font-casual;
+  }
+  
+  body {
+    @apply bg-canvas-50 text-gray-900;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-warm-300 to-cozy-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gradient-to-b from-warm-400 to-cozy-400;
+  }
+}
+
+@layer components {
+  /* Canvas-inspired button styles */
+  .btn-canvas {
+    @apply inline-flex items-center px-6 py-3 rounded-xl font-medium font-casual transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-canvas-primary {
+    @apply btn-canvas bg-gradient-to-r from-warm-500 to-cozy-500 text-white hover:from-warm-600 hover:to-cozy-600 focus:ring-warm-500;
+  }
+
+  .btn-canvas-secondary {
+    @apply btn-canvas bg-gradient-to-r from-family-100 to-family-200 text-family-700 hover:from-family-200 hover:to-family-300 focus:ring-family-500 border border-family-300;
+  }
+
+  .btn-canvas-warm {
+    @apply btn-canvas bg-gradient-to-r from-warm-50 to-warm-100 text-warm-700 hover:from-warm-100 hover:to-warm-200 focus:ring-warm-500 border border-warm-200;
+  }
+
+  /* Canvas card styles */
+  .card-canvas {
+    @apply bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300;
+  }
+
+  .card-canvas-interactive {
+    @apply card-canvas cursor-pointer hover:scale-105 hover:-rotate-1;
+  }
+
+  /* Canvas input styles */
+  .input-canvas {
+    @apply w-full px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/70 focus:ring-2 focus:ring-warm-500 focus:border-transparent placeholder-gray-500 font-casual transition-all duration-200;
+  }
+
+  /* Canvas pattern backgrounds */
+  .bg-canvas-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(247, 190, 91, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, #fefcf7 0%, #fef9ec 100%);
+  }
+
+  /* Gradient text styles */
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-warm-600 to-cozy-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-family {
+    @apply bg-gradient-to-r from-family-600 to-cozy-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-nature {
+    @apply bg-gradient-to-r from-nature-600 to-warm-600 bg-clip-text text-transparent;
+  }
+
+  /* Canvas animations */
+  .animate-canvas-float {
+    animation: canvas-float 6s ease-in-out infinite;
+  }
+
+  .animate-canvas-glow {
+    animation: canvas-glow 4s ease-in-out infinite alternate;
+  };
+}
+
+@layer utilities {
+  /* Canvas-specific utilities */
+  .canvas-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E");
+  }
+
+  .backdrop-blur-canvas {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Custom keyframes for canvas animations */
+@keyframes canvas-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+@keyframes canvas-glow {
+  0% {
+    box-shadow: 0 0 20px rgba(247, 190, 91, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.4);
+  }
+}
+
+/* Focus styles for accessibility */
+.focus-canvas {
+  @apply focus:outline-none focus:ring-2 focus:ring-warm-500 focus:ring-offset-2 focus:ring-offset-white;
+}
+
+/* Smooth transitions for canvas interactions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Canvas gradient overlays */
+.canvas-overlay-warm {
+  background: linear-gradient(135deg, rgba(254, 252, 247, 0.8) 0%, rgba(254, 237, 213, 0.8) 100%);
+}
+
+.canvas-overlay-family {
+  background: linear-gradient(135deg, rgba(240, 249, 255, 0.8) 0%, rgba(224, 242, 254, 0.8) 100%);
+}
+
+/* Interactive canvas elements */
+.canvas-interactive {
+  @apply transform-gpu transition-all duration-300 ease-out;
+}
+
+.canvas-interactive:hover {
+  @apply scale-105 shadow-2xl;
+}
+
+.canvas-interactive:active {
+  @apply scale-95;
+}
+
+/* Canvas typing animation */
+@keyframes canvas-type {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.canvas-typewriter {
+  overflow: hidden;
+  border-right: 2px solid #f97316;
+  white-space: nowrap;
+  animation: canvas-type 3s steps(40, end) infinite;
+}
